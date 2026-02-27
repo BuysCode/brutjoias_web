@@ -3,9 +3,11 @@ import { Home, Menu, Search, UserCircle, X } from 'lucide-react'
 import BagIcon from './BagIcon'
 import SidebarLink from './SidebarLink'
 import HeaderLink from './HeaderLink'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from './ui/dropdown-menu'
+import { redirect } from '@tanstack/react-router'
 
 export default function Header() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState<boolean>(false)
 
   return (
     <>
@@ -25,6 +27,25 @@ export default function Header() {
         <div className='hidden md:flex flex-row gap-4'>
           <HeaderLink page='/new' label='Novos' />
           <HeaderLink page='/popular' label='Populares' />
+          <DropdownMenu>
+            <DropdownMenuTrigger>
+              <DropdownMenuLabel className='text-lg font-normal hover:underline cursor-pointer'>Brincos</DropdownMenuLabel>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className='border-gray-300 space-y-1'>
+              <DropdownMenuItem onClick={() => redirect({ to: "/" })}>
+                Argolas
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => redirect({ to: "/" })}>
+                Minimalistas
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => redirect({ to: "/" })}>
+                Cravejados
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => redirect({ to: "/" })}>
+                Todos
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
         <div className='flex flex-row gap-4 items-center'>
           <Search className='cursor-pointer' />
