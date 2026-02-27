@@ -10,33 +10,43 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BrincosCategoriaBrincoRouteImport } from './routes/brincos/$categoriaBrinco'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BrincosCategoriaBrincoRoute = BrincosCategoriaBrincoRouteImport.update({
+  id: '/brincos/$categoriaBrinco',
+  path: '/brincos/$categoriaBrinco',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/brincos/$categoriaBrinco': typeof BrincosCategoriaBrincoRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/brincos/$categoriaBrinco': typeof BrincosCategoriaBrincoRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/brincos/$categoriaBrinco': typeof BrincosCategoriaBrincoRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/brincos/$categoriaBrinco'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/brincos/$categoriaBrinco'
+  id: '__root__' | '/' | '/brincos/$categoriaBrinco'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BrincosCategoriaBrincoRoute: typeof BrincosCategoriaBrincoRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +58,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/brincos/$categoriaBrinco': {
+      id: '/brincos/$categoriaBrinco'
+      path: '/brincos/$categoriaBrinco'
+      fullPath: '/brincos/$categoriaBrinco'
+      preLoaderRoute: typeof BrincosCategoriaBrincoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BrincosCategoriaBrincoRoute: BrincosCategoriaBrincoRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

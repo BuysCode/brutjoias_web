@@ -4,9 +4,10 @@ import BagIcon from './BagIcon'
 import SidebarLink from './SidebarLink'
 import HeaderLink from './HeaderLink'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from './ui/dropdown-menu'
-import { redirect } from '@tanstack/react-router'
+import { useNavigate } from '@tanstack/react-router'
 
 export default function Header() {
+  const navigate = useNavigate()
   const [isOpen, setIsOpen] = useState<boolean>(false)
 
   return (
@@ -32,16 +33,16 @@ export default function Header() {
               <DropdownMenuLabel className='text-lg font-normal hover:underline cursor-pointer'>Brincos</DropdownMenuLabel>
             </DropdownMenuTrigger>
             <DropdownMenuContent className='border-gray-300 space-y-1'>
-              <DropdownMenuItem onClick={() => redirect({ to: "/" })}>
+              <DropdownMenuItem onClick={() => navigate({ to: "/brincos/$categoriaBrinco", params: { categoriaBrinco: "argolas" } })}>
                 Argolas
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => redirect({ to: "/" })}>
+              <DropdownMenuItem onClick={() => navigate({ to: "/brincos/$categoriaBrinco", params: { categoriaBrinco: "minimalistas" } })}>
                 Minimalistas
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => redirect({ to: "/" })}>
+              <DropdownMenuItem onClick={() => navigate({ to: "/brincos/$categoriaBrinco", params: { categoriaBrinco: "cravejados" } })}>
                 Cravejados
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => redirect({ to: "/" })}>
+              <DropdownMenuItem onClick={() => navigate({ to: "/brincos/$categoriaBrinco", params: { categoriaBrinco: "todos" } })}>
                 Todos
               </DropdownMenuItem>
             </DropdownMenuContent>
