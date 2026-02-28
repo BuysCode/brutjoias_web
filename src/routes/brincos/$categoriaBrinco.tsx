@@ -1,6 +1,6 @@
 import NotFound from '@/components/404'
 import Header from '@/components/Header'
-import EarringsGrid from '@/components/products/grid'
+import { EarringsGrid } from '@/components/products/grid'
 import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/brincos/$categoriaBrinco')({

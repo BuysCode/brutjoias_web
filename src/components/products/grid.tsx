@@ -2,7 +2,7 @@ import { earringsProducts } from "@/constants"
 import { ShoppingCart } from "lucide-react"
 import { Button } from "../ui/button"
 
-export default function EarringsGrid({ category }: { category: string }) {
+export function EarringsGrid({ category }: { category: string }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 mt-8 space-x-8 space-y-8 md:space-y-0">
       {
