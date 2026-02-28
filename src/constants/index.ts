@@ -1,12 +1,20 @@
-interface ProductsI {
+interface FeedbacksI {
+  stars: 0 | 0.5 | 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 4.5 | 5;
+  photos?: string[];
+  comment?: string;
+  replies?: string[];
+}
+
+export interface ProductsI {
   id: string | number;
   name: string;
   price: number;
   discount?: number;
   description: string;
-  sizes: string[];
+  sizes?: string[];
   images: string[];
   category: string;
+  feedbacks?: FeedbacksI[];  
 }
 
 export const earringsProducts: ProductsI[] = [
@@ -15,7 +23,6 @@ export const earringsProducts: ProductsI[] = [
     name: "Brinco Ponto de Luz Classic",
     price: 79.9,
     description: "Brinco minimalista com zircônia central e acabamento em banho dourado.",
-    sizes: ["Único"],
     images: ["/images/brincos/ponto-de-luz-1.jpg"],
     category: "brincos-minimalistas"
   },
@@ -25,7 +32,6 @@ export const earringsProducts: ProductsI[] = [
     price: 69.9,
     discount: 10,
     description: "Design fino e contemporâneo em formato linear, ideal para composições discretas.",
-    sizes: ["Único"],
     images: ["/images/brincos/traco-linear-1.jpg"],
     category: "brincos-minimalistas"
   },
@@ -35,7 +41,6 @@ export const earringsProducts: ProductsI[] = [
     price: 149.9,
     discount: 15,
     description: "Modelo sofisticado com microcravação de cristais brilhantes.",
-    sizes: ["Único"],
     images: ["/images/brincos/lux-cravejado-1.jpg"],
     category: "brincos-cravejados"
   },
@@ -44,7 +49,6 @@ export const earringsProducts: ProductsI[] = [
     name: "Brinco Gota Glam Cravejado",
     price: 169.9,
     description: "Formato gota com pedras cravejadas que elevam o visual para ocasiões especiais.",
-    sizes: ["Único"],
     images: ["/images/brincos/gota-glam-1.jpg"],
     category: "brincos-cravejados"
   },

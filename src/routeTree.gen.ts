@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ColaresCategoriaColarRouteImport } from './routes/colares/$categoriaColar'
 import { Route as BrincosCategoriaBrincoRouteImport } from './routes/brincos/$categoriaBrinco'
 import { Route as AneisCategoriaAnelRouteImport } from './routes/aneis/$categoriaAnel'
+import { Route as CategoriasTodosIndexRouteImport } from './routes/categorias/todos/index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -34,18 +35,25 @@ const AneisCategoriaAnelRoute = AneisCategoriaAnelRouteImport.update({
   path: '/aneis/$categoriaAnel',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CategoriasTodosIndexRoute = CategoriasTodosIndexRouteImport.update({
+  id: '/categorias/todos/',
+  path: '/categorias/todos/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/aneis/$categoriaAnel': typeof AneisCategoriaAnelRoute
   '/brincos/$categoriaBrinco': typeof BrincosCategoriaBrincoRoute
   '/colares/$categoriaColar': typeof ColaresCategoriaColarRoute
+  '/categorias/todos/': typeof CategoriasTodosIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/aneis/$categoriaAnel': typeof AneisCategoriaAnelRoute
   '/brincos/$categoriaBrinco': typeof BrincosCategoriaBrincoRoute
   '/colares/$categoriaColar': typeof ColaresCategoriaColarRoute
+  '/categorias/todos': typeof CategoriasTodosIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,6 +61,7 @@ export interface FileRoutesById {
   '/aneis/$categoriaAnel': typeof AneisCategoriaAnelRoute
   '/brincos/$categoriaBrinco': typeof BrincosCategoriaBrincoRoute
   '/colares/$categoriaColar': typeof ColaresCategoriaColarRoute
+  '/categorias/todos/': typeof CategoriasTodosIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -61,18 +70,21 @@ export interface FileRouteTypes {
     | '/aneis/$categoriaAnel'
     | '/brincos/$categoriaBrinco'
     | '/colares/$categoriaColar'
+    | '/categorias/todos/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/aneis/$categoriaAnel'
     | '/brincos/$categoriaBrinco'
     | '/colares/$categoriaColar'
+    | '/categorias/todos'
   id:
     | '__root__'
     | '/'
     | '/aneis/$categoriaAnel'
     | '/brincos/$categoriaBrinco'
     | '/colares/$categoriaColar'
+    | '/categorias/todos/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -80,6 +92,7 @@ export interface RootRouteChildren {
   AneisCategoriaAnelRoute: typeof AneisCategoriaAnelRoute
   BrincosCategoriaBrincoRoute: typeof BrincosCategoriaBrincoRoute
   ColaresCategoriaColarRoute: typeof ColaresCategoriaColarRoute
+  CategoriasTodosIndexRoute: typeof CategoriasTodosIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -112,6 +125,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AneisCategoriaAnelRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/categorias/todos/': {
+      id: '/categorias/todos/'
+      path: '/categorias/todos'
+      fullPath: '/categorias/todos/'
+      preLoaderRoute: typeof CategoriasTodosIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -120,6 +140,7 @@ const rootRouteChildren: RootRouteChildren = {
   AneisCategoriaAnelRoute: AneisCategoriaAnelRoute,
   BrincosCategoriaBrincoRoute: BrincosCategoriaBrincoRoute,
   ColaresCategoriaColarRoute: ColaresCategoriaColarRoute,
+  CategoriasTodosIndexRoute: CategoriasTodosIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

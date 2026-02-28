@@ -1,6 +1,4 @@
 import { earringsProducts } from "@/constants"
-import { ShoppingCart } from "lucide-react"
-import { Button } from "../ui/button"
 import { formatToBR } from "@/lib/functions/products/formatPrice"
 
 export function EarringsGrid({ category }: { category: string }) {
@@ -30,7 +28,7 @@ export function EarringsGrid({ category }: { category: string }) {
             return (
               <div
                 key={product.id}
-                className="items-center flex justify-center flex-col w-85 gap-2 p-4 rounded-lg border-gray-300 border"
+                className="items-center flex justify-center flex-col w-85 gap-2 p-4 rounded-lg"
               >
                 <h1 className="text-xl text-center font-bold">
                   {product.name}
@@ -50,11 +48,6 @@ export function EarringsGrid({ category }: { category: string }) {
                     </p>
                   </div>
                 )}
-
-                <Button className="cursor-pointer w-full">
-                  <ShoppingCart size={20} />
-                  Comprar
-                </Button>
               </div>
             )
           })
