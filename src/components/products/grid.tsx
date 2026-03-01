@@ -1,5 +1,7 @@
 import { earringsProducts } from "@/constants"
 import { formatToBR } from "@/lib/functions/products/formatPrice"
+import { useNavigate } from "@tanstack/react-router"
+import { ImageOff } from "lucide-react"
 
 export function EarringsGrid({ category }: { category: string }) {
 
@@ -10,8 +12,10 @@ export function EarringsGrid({ category }: { category: string }) {
     return price - (price * discount) / 100
   }
 
+  const navigate = useNavigate()
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 mt-8 space-x-8 space-y-8 md:space-y-0">
+    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 items-start">
       {
         earringsProducts
           .filter((product) => product.category === category)
@@ -28,8 +32,17 @@ export function EarringsGrid({ category }: { category: string }) {
             return (
               <div
                 key={product.id}
-                className="items-center flex justify-center flex-col w-85 gap-2 p-4 rounded-lg"
+                className="items-center flex justify-center flex-col w-85 gap-2 p-4 rounded-lg cursor-pointer hover:scale-105 transition-transform"
+                onClick={() => navigate({
+                  to: "/produto/$idProduto",
+                  params: {
+                    idProduto: product.id as string
+                  }
+                })}
               >
+                <div className="w-full h-120 bg-gray-500 rounded-lg flex items-center justify-center text-gray-400 text-sm border-2 border-dashed border-gray-300">
+                  <ImageOff size={40} />
+                </div>
                 <h1 className="text-xl text-center font-bold">
                   {product.name}
                 </h1>

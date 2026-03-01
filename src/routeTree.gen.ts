@@ -10,6 +10,9 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as TodosIndexRouteImport } from './routes/todos/index'
+import { Route as NovosIndexRouteImport } from './routes/novos/index'
+import { Route as ProdutoIdProdutoRouteImport } from './routes/produto/$idProduto'
 import { Route as ColaresCategoriaColarRouteImport } from './routes/colares/$categoriaColar'
 import { Route as BrincosCategoriaBrincoRouteImport } from './routes/brincos/$categoriaBrinco'
 import { Route as AneisCategoriaAnelRouteImport } from './routes/aneis/$categoriaAnel'
@@ -18,6 +21,21 @@ import { Route as CategoriasTodosIndexRouteImport } from './routes/categorias/to
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TodosIndexRoute = TodosIndexRouteImport.update({
+  id: '/todos/',
+  path: '/todos/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NovosIndexRoute = NovosIndexRouteImport.update({
+  id: '/novos/',
+  path: '/novos/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProdutoIdProdutoRoute = ProdutoIdProdutoRouteImport.update({
+  id: '/produto/$idProduto',
+  path: '/produto/$idProduto',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ColaresCategoriaColarRoute = ColaresCategoriaColarRouteImport.update({
@@ -46,6 +64,9 @@ export interface FileRoutesByFullPath {
   '/aneis/$categoriaAnel': typeof AneisCategoriaAnelRoute
   '/brincos/$categoriaBrinco': typeof BrincosCategoriaBrincoRoute
   '/colares/$categoriaColar': typeof ColaresCategoriaColarRoute
+  '/produto/$idProduto': typeof ProdutoIdProdutoRoute
+  '/novos/': typeof NovosIndexRoute
+  '/todos/': typeof TodosIndexRoute
   '/categorias/todos/': typeof CategoriasTodosIndexRoute
 }
 export interface FileRoutesByTo {
@@ -53,6 +74,9 @@ export interface FileRoutesByTo {
   '/aneis/$categoriaAnel': typeof AneisCategoriaAnelRoute
   '/brincos/$categoriaBrinco': typeof BrincosCategoriaBrincoRoute
   '/colares/$categoriaColar': typeof ColaresCategoriaColarRoute
+  '/produto/$idProduto': typeof ProdutoIdProdutoRoute
+  '/novos': typeof NovosIndexRoute
+  '/todos': typeof TodosIndexRoute
   '/categorias/todos': typeof CategoriasTodosIndexRoute
 }
 export interface FileRoutesById {
@@ -61,6 +85,9 @@ export interface FileRoutesById {
   '/aneis/$categoriaAnel': typeof AneisCategoriaAnelRoute
   '/brincos/$categoriaBrinco': typeof BrincosCategoriaBrincoRoute
   '/colares/$categoriaColar': typeof ColaresCategoriaColarRoute
+  '/produto/$idProduto': typeof ProdutoIdProdutoRoute
+  '/novos/': typeof NovosIndexRoute
+  '/todos/': typeof TodosIndexRoute
   '/categorias/todos/': typeof CategoriasTodosIndexRoute
 }
 export interface FileRouteTypes {
@@ -70,6 +97,9 @@ export interface FileRouteTypes {
     | '/aneis/$categoriaAnel'
     | '/brincos/$categoriaBrinco'
     | '/colares/$categoriaColar'
+    | '/produto/$idProduto'
+    | '/novos/'
+    | '/todos/'
     | '/categorias/todos/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -77,6 +107,9 @@ export interface FileRouteTypes {
     | '/aneis/$categoriaAnel'
     | '/brincos/$categoriaBrinco'
     | '/colares/$categoriaColar'
+    | '/produto/$idProduto'
+    | '/novos'
+    | '/todos'
     | '/categorias/todos'
   id:
     | '__root__'
@@ -84,6 +117,9 @@ export interface FileRouteTypes {
     | '/aneis/$categoriaAnel'
     | '/brincos/$categoriaBrinco'
     | '/colares/$categoriaColar'
+    | '/produto/$idProduto'
+    | '/novos/'
+    | '/todos/'
     | '/categorias/todos/'
   fileRoutesById: FileRoutesById
 }
@@ -92,6 +128,9 @@ export interface RootRouteChildren {
   AneisCategoriaAnelRoute: typeof AneisCategoriaAnelRoute
   BrincosCategoriaBrincoRoute: typeof BrincosCategoriaBrincoRoute
   ColaresCategoriaColarRoute: typeof ColaresCategoriaColarRoute
+  ProdutoIdProdutoRoute: typeof ProdutoIdProdutoRoute
+  NovosIndexRoute: typeof NovosIndexRoute
+  TodosIndexRoute: typeof TodosIndexRoute
   CategoriasTodosIndexRoute: typeof CategoriasTodosIndexRoute
 }
 
@@ -102,6 +141,27 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/todos/': {
+      id: '/todos/'
+      path: '/todos'
+      fullPath: '/todos/'
+      preLoaderRoute: typeof TodosIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/novos/': {
+      id: '/novos/'
+      path: '/novos'
+      fullPath: '/novos/'
+      preLoaderRoute: typeof NovosIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/produto/$idProduto': {
+      id: '/produto/$idProduto'
+      path: '/produto/$idProduto'
+      fullPath: '/produto/$idProduto'
+      preLoaderRoute: typeof ProdutoIdProdutoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/colares/$categoriaColar': {
@@ -140,6 +200,9 @@ const rootRouteChildren: RootRouteChildren = {
   AneisCategoriaAnelRoute: AneisCategoriaAnelRoute,
   BrincosCategoriaBrincoRoute: BrincosCategoriaBrincoRoute,
   ColaresCategoriaColarRoute: ColaresCategoriaColarRoute,
+  ProdutoIdProdutoRoute: ProdutoIdProdutoRoute,
+  NovosIndexRoute: NovosIndexRoute,
+  TodosIndexRoute: TodosIndexRoute,
   CategoriasTodosIndexRoute: CategoriasTodosIndexRoute,
 }
 export const routeTree = rootRouteImport
