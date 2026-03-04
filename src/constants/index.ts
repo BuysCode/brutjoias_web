@@ -2,7 +2,7 @@ interface FeedbacksI {
   stars: 0 | 0.5 | 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 4.5 | 5;
   photos?: string[];
   comment?: string;
-  replies?: string[];
+  replies?: object[];
 }
 
 export interface ProductsI {
@@ -14,7 +14,7 @@ export interface ProductsI {
   sizes?: string[];
   images: string[];
   category: string;
-  feedbacks?: FeedbacksI[];  
+  feedbacks?: FeedbacksI[];
 }
 
 export const earringsProducts: ProductsI[] = [
