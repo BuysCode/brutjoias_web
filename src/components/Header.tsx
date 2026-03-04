@@ -16,7 +16,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="p-8 flex items-center h-25 shadow-lg justify-between">
+      <header className="p-8 flex items-center h-25 shadow-lg z-10 bg-white top-0 sticky justify-between">
         <div className='flex flex-row gap-2 items-center'>
           <button
             onClick={() => setIsOpen(true)}
