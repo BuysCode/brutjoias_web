@@ -3,7 +3,13 @@ import { Home, Menu, Search, UserCircle, X } from 'lucide-react'
 import BagIcon from './BagIcon'
 import SidebarLink from './SidebarLink'
 import HeaderLink from './HeaderLink'
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from './ui/dropdown-menu'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuTrigger,
+} from './ui/dropdown-menu'
 import { useNavigate } from '@tanstack/react-router'
 import { SearchJewel } from './products/search'
 import { earringsProducts } from '@/constants'
@@ -17,7 +23,7 @@ export default function Header() {
   return (
     <>
       <header className="p-8 flex items-center h-25 shadow-lg z-10 bg-white top-0 sticky justify-between">
-        <div className='flex flex-row gap-2 items-center'>
+        <div className="flex flex-row gap-2 items-center">
           <button
             onClick={() => setIsOpen(true)}
             className="md:hidden block p-2 hover:bg-gray-300 rounded-lg cursor-pointer transition-colors"
@@ -25,42 +31,71 @@ export default function Header() {
           >
             <Menu size={24} />
           </button>
-          <h1 className="ml-4 text-xl font-semibold">
-            BRUT
-          </h1>
+          <h1 className="ml-4 text-xl font-semibold">BRUT</h1>
         </div>
-        {
-          isSearchActive === false ? (
-            <div className='hidden md:flex flex-row gap-4'>
-              <HeaderLink page='/new' label='Novos' />
-              <HeaderLink page='/popular' label='Populares' />
-              <DropdownMenu>
-                <DropdownMenuTrigger>
-                  <DropdownMenuLabel className='text-lg font-normal hover:underline cursor-pointer'>Brincos</DropdownMenuLabel>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className='border-gray-300 space-y-1'>
-                  <DropdownMenuItem onClick={() => navigate({ to: "/brincos/$categoriaBrinco", params: { categoriaBrinco: "argolas" } })}>
-                    Argolas
-                  </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => navigate({ to: "/brincos/$categoriaBrinco", params: { categoriaBrinco: "minimalistas" } })}>
-                    Minimalistas
-                  </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => navigate({ to: "/brincos/$categoriaBrinco", params: { categoriaBrinco: "cravejados" } })}>
-                    Cravejados
-                  </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => navigate({ to: "/brincos/$categoriaBrinco", params: { categoriaBrinco: "todos" } })}>
-                    Todos
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </div>
-          ) : (
-            <SearchJewel products={earringsProducts} />
-          )
-        }
-        <div className='flex flex-row gap-4 items-center'>
-          <Search onClick={() => setIsSearchActive(!isSearchActive)} className='cursor-pointer' />
-          <UserCircle className='cursor-pointer' />
+        {isSearchActive === false ? (
+          <div className="hidden md:flex flex-row gap-4">
+            <HeaderLink page="/novos" label="Novos" />
+            <HeaderLink page="/populares" label="Populares" />
+            <DropdownMenu>
+              <DropdownMenuTrigger>
+                <DropdownMenuLabel className="text-lg font-normal hover:underline cursor-pointer">
+                  Brincos
+                </DropdownMenuLabel>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="border-gray-300 space-y-1">
+                <DropdownMenuItem
+                  onClick={() =>
+                    navigate({
+                      to: '/brincos/$categoriaBrinco',
+                      params: { categoriaBrinco: 'argolas' },
+                    })
+                  }
+                >
+                  Argolas
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  onClick={() =>
+                    navigate({
+                      to: '/brincos/$categoriaBrinco',
+                      params: { categoriaBrinco: 'minimalistas' },
+                    })
+                  }
+                >
+                  Minimalistas
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  onClick={() =>
+                    navigate({
+                      to: '/brincos/$categoriaBrinco',
+                      params: { categoriaBrinco: 'cravejados' },
+                    })
+                  }
+                >
+                  Cravejados
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  onClick={() =>
+                    navigate({
+                      to: '/brincos/$categoriaBrinco',
+                      params: { categoriaBrinco: 'todos' },
+                    })
+                  }
+                >
+                  Todos
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
+        ) : (
+          <SearchJewel products={earringsProducts} />
+        )}
+        <div className="flex flex-row gap-4 items-center">
+          <Search
+            onClick={() => setIsSearchActive(!isSearchActive)}
+            className="cursor-pointer"
+          />
+          <UserCircle className="cursor-pointer" />
           <BagIcon count={0} />
         </div>
       </header>
@@ -82,7 +117,7 @@ export default function Header() {
         </div>
 
         <nav className="flex-1 p-4 overflow-y-auto">
-          <SidebarLink icon={Home} label='Home' page='/' />
+          <SidebarLink icon={Home} label="Home" page="/" />
         </nav>
       </aside>
     </>

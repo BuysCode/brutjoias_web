@@ -9,23 +9,29 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TodosRouteImport } from './routes/todos'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as TodosIndexRouteImport } from './routes/todos/index'
+import { Route as PopularesIndexRouteImport } from './routes/populares/index'
 import { Route as NovosIndexRouteImport } from './routes/novos/index'
 import { Route as ProdutoIdProdutoRouteImport } from './routes/produto/$idProduto'
+import { Route as PesquisaNomeProdutoRouteImport } from './routes/pesquisa/$nomeProduto'
 import { Route as ColaresCategoriaColarRouteImport } from './routes/colares/$categoriaColar'
 import { Route as BrincosCategoriaBrincoRouteImport } from './routes/brincos/$categoriaBrinco'
 import { Route as AneisCategoriaAnelRouteImport } from './routes/aneis/$categoriaAnel'
-import { Route as CategoriasTodosIndexRouteImport } from './routes/categorias/todos/index'
 
+const TodosRoute = TodosRouteImport.update({
+  id: '/todos',
+  path: '/todos',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const TodosIndexRoute = TodosIndexRouteImport.update({
-  id: '/todos/',
-  path: '/todos/',
+const PopularesIndexRoute = PopularesIndexRouteImport.update({
+  id: '/populares/',
+  path: '/populares/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NovosIndexRoute = NovosIndexRouteImport.update({
@@ -36,6 +42,11 @@ const NovosIndexRoute = NovosIndexRouteImport.update({
 const ProdutoIdProdutoRoute = ProdutoIdProdutoRouteImport.update({
   id: '/produto/$idProduto',
   path: '/produto/$idProduto',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PesquisaNomeProdutoRoute = PesquisaNomeProdutoRouteImport.update({
+  id: '/pesquisa/$nomeProduto',
+  path: '/pesquisa/$nomeProduto',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ColaresCategoriaColarRoute = ColaresCategoriaColarRouteImport.update({
@@ -53,89 +64,98 @@ const AneisCategoriaAnelRoute = AneisCategoriaAnelRouteImport.update({
   path: '/aneis/$categoriaAnel',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CategoriasTodosIndexRoute = CategoriasTodosIndexRouteImport.update({
-  id: '/categorias/todos/',
-  path: '/categorias/todos/',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/todos': typeof TodosRoute
   '/aneis/$categoriaAnel': typeof AneisCategoriaAnelRoute
   '/brincos/$categoriaBrinco': typeof BrincosCategoriaBrincoRoute
   '/colares/$categoriaColar': typeof ColaresCategoriaColarRoute
+  '/pesquisa/$nomeProduto': typeof PesquisaNomeProdutoRoute
   '/produto/$idProduto': typeof ProdutoIdProdutoRoute
   '/novos/': typeof NovosIndexRoute
-  '/todos/': typeof TodosIndexRoute
-  '/categorias/todos/': typeof CategoriasTodosIndexRoute
+  '/populares/': typeof PopularesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/todos': typeof TodosRoute
   '/aneis/$categoriaAnel': typeof AneisCategoriaAnelRoute
   '/brincos/$categoriaBrinco': typeof BrincosCategoriaBrincoRoute
   '/colares/$categoriaColar': typeof ColaresCategoriaColarRoute
+  '/pesquisa/$nomeProduto': typeof PesquisaNomeProdutoRoute
   '/produto/$idProduto': typeof ProdutoIdProdutoRoute
   '/novos': typeof NovosIndexRoute
-  '/todos': typeof TodosIndexRoute
-  '/categorias/todos': typeof CategoriasTodosIndexRoute
+  '/populares': typeof PopularesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/todos': typeof TodosRoute
   '/aneis/$categoriaAnel': typeof AneisCategoriaAnelRoute
   '/brincos/$categoriaBrinco': typeof BrincosCategoriaBrincoRoute
   '/colares/$categoriaColar': typeof ColaresCategoriaColarRoute
+  '/pesquisa/$nomeProduto': typeof PesquisaNomeProdutoRoute
   '/produto/$idProduto': typeof ProdutoIdProdutoRoute
   '/novos/': typeof NovosIndexRoute
-  '/todos/': typeof TodosIndexRoute
-  '/categorias/todos/': typeof CategoriasTodosIndexRoute
+  '/populares/': typeof PopularesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/todos'
     | '/aneis/$categoriaAnel'
     | '/brincos/$categoriaBrinco'
     | '/colares/$categoriaColar'
+    | '/pesquisa/$nomeProduto'
     | '/produto/$idProduto'
     | '/novos/'
-    | '/todos/'
-    | '/categorias/todos/'
+    | '/populares/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/todos'
     | '/aneis/$categoriaAnel'
     | '/brincos/$categoriaBrinco'
     | '/colares/$categoriaColar'
+    | '/pesquisa/$nomeProduto'
     | '/produto/$idProduto'
     | '/novos'
-    | '/todos'
-    | '/categorias/todos'
+    | '/populares'
   id:
     | '__root__'
     | '/'
+    | '/todos'
     | '/aneis/$categoriaAnel'
     | '/brincos/$categoriaBrinco'
     | '/colares/$categoriaColar'
+    | '/pesquisa/$nomeProduto'
     | '/produto/$idProduto'
     | '/novos/'
-    | '/todos/'
-    | '/categorias/todos/'
+    | '/populares/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  TodosRoute: typeof TodosRoute
   AneisCategoriaAnelRoute: typeof AneisCategoriaAnelRoute
   BrincosCategoriaBrincoRoute: typeof BrincosCategoriaBrincoRoute
   ColaresCategoriaColarRoute: typeof ColaresCategoriaColarRoute
+  PesquisaNomeProdutoRoute: typeof PesquisaNomeProdutoRoute
   ProdutoIdProdutoRoute: typeof ProdutoIdProdutoRoute
   NovosIndexRoute: typeof NovosIndexRoute
-  TodosIndexRoute: typeof TodosIndexRoute
-  CategoriasTodosIndexRoute: typeof CategoriasTodosIndexRoute
+  PopularesIndexRoute: typeof PopularesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/todos': {
+      id: '/todos'
+      path: '/todos'
+      fullPath: '/todos'
+      preLoaderRoute: typeof TodosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -143,11 +163,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/todos/': {
-      id: '/todos/'
-      path: '/todos'
-      fullPath: '/todos/'
-      preLoaderRoute: typeof TodosIndexRouteImport
+    '/populares/': {
+      id: '/populares/'
+      path: '/populares'
+      fullPath: '/populares/'
+      preLoaderRoute: typeof PopularesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/novos/': {
@@ -162,6 +182,13 @@ declare module '@tanstack/react-router' {
       path: '/produto/$idProduto'
       fullPath: '/produto/$idProduto'
       preLoaderRoute: typeof ProdutoIdProdutoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pesquisa/$nomeProduto': {
+      id: '/pesquisa/$nomeProduto'
+      path: '/pesquisa/$nomeProduto'
+      fullPath: '/pesquisa/$nomeProduto'
+      preLoaderRoute: typeof PesquisaNomeProdutoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/colares/$categoriaColar': {
@@ -185,25 +212,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AneisCategoriaAnelRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/categorias/todos/': {
-      id: '/categorias/todos/'
-      path: '/categorias/todos'
-      fullPath: '/categorias/todos/'
-      preLoaderRoute: typeof CategoriasTodosIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  TodosRoute: TodosRoute,
   AneisCategoriaAnelRoute: AneisCategoriaAnelRoute,
   BrincosCategoriaBrincoRoute: BrincosCategoriaBrincoRoute,
   ColaresCategoriaColarRoute: ColaresCategoriaColarRoute,
+  PesquisaNomeProdutoRoute: PesquisaNomeProdutoRoute,
   ProdutoIdProdutoRoute: ProdutoIdProdutoRoute,
   NovosIndexRoute: NovosIndexRoute,
-  TodosIndexRoute: TodosIndexRoute,
-  CategoriasTodosIndexRoute: CategoriasTodosIndexRoute,
+  PopularesIndexRoute: PopularesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

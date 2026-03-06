@@ -1,16 +1,16 @@
 import { createFileRoute } from '@tanstack/react-router'
 
-export const Route = createFileRoute('/novos/')({
+export const Route = createFileRoute('/todos')({
   component: RouteComponent,
   head: () => ({
     meta: [
       {
-        title: 'BrutJoias - Novidades',
+        title: 'BrutJoias - Produtos',
       },
     ],
   }),
 })
 
 function RouteComponent() {
-  return <div>Hello "/novos/"!</div>
+  return <div>Hello "/todos"!</div>
 }
