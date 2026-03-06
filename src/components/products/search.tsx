@@ -29,7 +29,7 @@ export const SearchJewel = ({ products }: { products: ProductsI[] }) => {
           onChange={(e) => setsearch(e.target.value)}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setTimeout(() => setIsFocused(false), 200)}
-          className="border-0 border-black hover:border-gray-700 placeholder:text-gray-500 placeholder:text-lg w-160 rounded-none border-b-2"
+          className="border-0 border-black hover:border-gray-700 placeholder:text-gray-500 placeholder:text-lg w-160 rounded-none border-b"
         />
         <Button
           onClick={() =>
